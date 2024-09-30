@@ -12,17 +12,28 @@
 
         <main>
             <section>
+                <h2>
+                   Invio lunghezza della password
+                </h2>
                 <form method="GET">
-                        <div>
-                            Lunghezza password :
-                        </div>
-                        <br>
                         <div>
                             <button type="submit" name="lunghezzaPassword" value="5">
                                 INVIA
                             </button>
                         </div>
                 </form>
+            </section>
+
+            <section>
+                <h2>
+                    Ricezione lunghezza della password
+                </h2>
+                <div>
+                    Lunghezza della password
+                    <p>
+                         <?php echo $_GET['lunghezzaPassword']; ?> 
+                    </p>
+                </div>
             </section>
         
         </main>
