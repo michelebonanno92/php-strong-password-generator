@@ -4,70 +4,60 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>php-strong-password-generator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body>
-
-        <main>
-            <section>
-                <h2>
-                   Invio lunghezza della password
-                </h2>
-                <form method="GET">
-                        <div>
-                            <button type="submit" name="lunghezzaPassword" value="5">
-                                INVIA
-                            </button>
+        <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>
+                                PHP password generator
+                            </h1>
                         </div>
-                </form>
-            </section>
-
-            <section>
-                <h2>
-                    Ricezione lunghezza della password
-                </h2>
-                <div>
-                    Lunghezza della password
-                    <p>
-                         <?php echo $_GET['lunghezzaPassword']; ?> 
-                    </p>
+                    </div>
                 </div>
-            </section>
-        
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <form action="" method="GET">
+
+                            <div class="mb-3">
+                                <label for="lenght" class="form-label">
+                                    <strong>
+                                        Lunghezza della password <span class="text-danger">*</span>
+                                    </strong>
+                                </label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="lenght" 
+                                    placeholder="Inserisci la lunghezza della password..."
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-text mb-3">
+                               <strong>
+                                    N.B.
+                               </strong>
+                                i campi contrassegnati con <span class="text-danger">*</span> sono obbligatori 
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary" type="submit">Invia</button>
+                            </div>
+                    
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+     
         </main>
         
     </body>
 </html>
-<?php
-    function generateRandomPassword($lunghezzaPassword) {
-        // Caratteri che possono essere utilizzati nella password
-        $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $lowercase = 'abcdefghijklmnopqrstuvwxyz';
-        $numbers = '0123456789';
-        $symbols = '!@#$%^&*()-_=+[]{};:,.<>?';
-    
-        // Combinare tutti i caratteri disponibili
-        $allCharacters = $uppercase . $lowercase . $numbers . $symbols;
-    
-        // Assicurati che la password contenga almeno un carattere di ciascun tipo
-        $password = '';
-        $password .= $uppercase[random_int(0, strlen($uppercase) - 1)];
-        $password .= $lowercase[random_int(0, strlen($lowercase) - 1)];
-        $password .= $numbers[random_int(0, strlen($numbers) - 1)];
-        $password .= $symbols[random_int(0, strlen($symbols) - 1)];
-    
-        // Riempi il resto della password con caratteri casuali
-        for ($i = 0; $i < $lunghezzaPassword; $i++) {
-            $password .= $allCharacters[random_int(0, strlen($allCharacters) - 1)];
-        }
-    
-        // Mescola la password per evitare sequenze prevedibili
-        $password = str_shuffle($password);
-    
-        return $password;
-    }
-    
-    // Esempio di utilizzo
-    $newPassword = generateRandomPassword($lunghezzaPassword);
-    echo "La tua password casuale è: " . $newPassword;
-    
-?>
