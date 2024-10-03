@@ -1,3 +1,24 @@
+<?php
+        $lenght = null;
+
+    if (isset($_GET['lenght'])){
+
+        $lenght = intval($_GET['lenght']);
+
+        var_dump($lenght);
+
+        if ($lenght >= 3 && $lenght <= 10 ) {
+            
+            var_dump('GENERA PASSWORD');
+        }
+
+    }
+
+    
+
+       
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +42,7 @@
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-sm-6 mx-sm-auto">
                         <form action="" method="GET">
 
                             <div class="mb-3">
@@ -31,11 +52,15 @@
                                     </strong>
                                 </label>
                                 <input
+                                    name="lenght"
                                     type="number"
                                     class="form-control"
                                     id="lenght" 
                                     placeholder="Inserisci la lunghezza della password..."
                                     required
+                                    min="3"
+                                    max="10"
+
                                 >
                             </div>
 
