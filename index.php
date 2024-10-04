@@ -1,30 +1,9 @@
 <?php
     
-    require_once __DIR__.'/partials/functions.php';
+    $lenght = intval($_GET['lenght']);
 
-      $minLenght = 3;
-      $maxLenght = 10;
-
-      $lenght = null; 
-      $password = null; 
-
-
-
-    //   impostiamo $lenght su null altrimenti mi esce il warning dicendomi che  è Undefined
-
-    if (isset($_GET['lenght'])){
-
-        $lenght = intval($_GET['lenght']);
-
-        // var_dump($lenght);
-        //  validazione sul server non baipassabile perchè l'utente non può arrivarci
-        if ($lenght >=  $minLenght && $lenght <= $maxLenght ) {
-            
-           $password = generatePassword($lenght);
-        //    var_dump($password);
-        }
-
-    }
+    $minLenght = 3;
+    $maxLenght = 10;
 
     
 ?>
@@ -52,7 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-sm-6 mx-sm-auto">
-                        <form action="" method="GET">
+                        <form action="generate-password.php" method="GET">
 
                             <div class="mb-3">
                                 <label for="lenght" class="form-label">
@@ -88,32 +67,11 @@
                                 <button class="btn btn-primary" type="submit">Invia</button>
                             </div>
                     
-                        </form>
-                        <?php 
-                            if($password != null){
-                        ?>
-                                <div class="row">
-                                <div class="col col-sm-6 mx-sm-auto">
-                                    <h4 class="mb-3 mt-3 text-center">
-                                        La password generata è :
-                                    </h4>
-                                    <div class="text-center fs-1">
-                                        <?php echo $password ?>  
-                                    </div>
-                                </div>
-                             </div>
-                        <?php     
-                            }
-                        ?>
-                        
+                        </form> 
                        
                     </div>
                 </div>
             </div>
-          
-               
-           
-
      
         </main>
         
