@@ -1,9 +1,5 @@
 <?php
 
-    $minLenght = 3;
-    $maxLenght = 10;
-
-
     function generatePassword($len) {
         $pass  = '';
 
@@ -27,15 +23,18 @@
             $pass .= $allCharacters[$randomIndex];
 
             // var_dump($pass);
-
         }
 
         return $pass;
     }
 
-     
+      $minLenght = 3;
+      $maxLenght = 10;
 
-    //   $lenght = null; 
+      $lenght = null; 
+      $password = null; 
+
+
 
     //   impostiamo $lenght su null altrimenti mi esce il warning dicendomi che  è Undefined
 
@@ -116,21 +115,30 @@
                             </div>
                     
                         </form>
+                        <?php 
+                            if($password != null){
+                        ?>
+                                <div class="row">
+                                <div class="col col-sm-6 mx-sm-auto">
+                                    <h4 class="mb-3 mt-3 text-center">
+                                        La password generata è :
+                                    </h4>
+                                    <div class="text-center fs-1">
+                                        <?php echo $password ?>  
+                                    </div>
+                                </div>
+                             </div>
+                        <?php     
+                            }
+                        ?>
+                        
+                       
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-sm-6 mx-sm-auto">
-                            <div class="mb-3 mt-3">
-                                 La password generata è :
-                            </div>
-                            <div>
-                                <?php echo $password ?>  
-                            </div>
-                    </div>
-                </div>
-            </div>
+          
+               
+           
 
      
         </main>
