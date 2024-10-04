@@ -1,23 +1,59 @@
 <?php
-        $lenght = null;
+
+    $minLenght = 3;
+    $maxLenght = 10;
+
+
+    function generatePassword($len) {
+        $pass  = '';
+
+        $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        $numnbers = '1234567890' ;
+        $symbols = '!?~@#-_+<>[]{}';
+
+        $allCharacters =  $uppercase.$lowercase.$numnbers.$symbols ;
+
+        $fisrtIndex = 0;
+    
+        $lastIndex = strlen($allCharacters) - 1;
+
+       
+        for ( $i = 0; $i < $len; $i++) {
+            $randomIndex = rand($fisrtIndex, $lastIndex);
+
+            // var_dump($allCharacters[$randomIndex]);
+
+            $pass .= $allCharacters[$randomIndex];
+
+            // var_dump($pass);
+
+        }
+
+        return $pass;
+    }
+
+     
+
+    //   $lenght = null; 
+
+    //   impostiamo $lenght su null altrimenti mi esce il warning dicendomi che  è Undefined
 
     if (isset($_GET['lenght'])){
 
         $lenght = intval($_GET['lenght']);
 
-        var_dump($lenght);
-
-        if ($lenght >= 3 && $lenght <= 10 ) {
+        // var_dump($lenght);
+        //  validazione sul server non baipassabile perchè l'utente non può arrivarci
+        if ($lenght >=  $minLenght && $lenght <= $maxLenght ) {
             
-            var_dump('GENERA PASSWORD');
+           $password = generatePassword($lenght);
+        //    var_dump($password);
         }
 
     }
 
     
-
-       
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,10 +93,14 @@
                                     class="form-control"
                                     id="lenght" 
                                     placeholder="Inserisci la lunghezza della password..."
+                                    value=" <?php
+                                        if (isset($_GET['lenght'])) {
+                                            echo $_GET['lenght'];
+                                        }
+                                    ?>"
                                     required
-                                    min="3"
-                                    max="10"
-
+                                    min="<?php echo $minLenght; ?>"
+                                    max="<?php echo $maxLenght; ?>"
                                 >
                             </div>
 
@@ -79,7 +119,18 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="container">
+                <div class="row">
+                    <div class="col col-sm-6 mx-sm-auto">
+                            <div class="mb-3 mt-3">
+                                 La password generata è :
+                            </div>
+                            <div>
+                                <?php echo $password ?>  
+                            </div>
+                    </div>
+                </div>
+            </div>
 
      
         </main>
