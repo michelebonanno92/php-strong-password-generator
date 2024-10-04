@@ -1,9 +1,17 @@
 <?php
     
-    $lenght = intval($_GET['lenght']);
-
     $minLenght = 3;
     $maxLenght = 10;
+    $lenght = '';
+    $error = false;
+
+    if (isset ($_GET['lenght'])) {
+        $lenght = intval($_GET['lenght']);
+    }
+
+    if (isset ($_GET['error'])) {
+      $error = true;
+    }
 
     
 ?>
@@ -31,6 +39,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-sm-6 mx-sm-auto">
+                        <?php
+                            if ($error) {
+                        ?>   
+                            <div class=" alert alert-danger mb-4">
+                                Valore lunghezza non valido ( nonostatnte i ripetuti avvertimenti.....!)
+                            </div>
+                        <?php
+                            }
+                        ?>
                         <form action="generate-password.php" method="GET">
 
                             <div class="mb-3">

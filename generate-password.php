@@ -25,12 +25,17 @@ if (isset($_GET['lenght'])){
         // oppure 
         $_SESSION['password'] = generatePassword($lenght);
 
+        // var_dump($_SESSION['password']);
         header('Location:./result.php');
     }
     else{
-        header('Location:./index.php?error=1 ');
+        header('Location: ./index.php?error=1');
+        // var_dump('VALORE NON VALIDO ');
+
     }
 }
 else{
-    header('Location:./index.php?error=1 ');
+    header('Location: ./index.php?error=1');
+    // var_dump('LENGHT NON PASSATO');
+
 }
